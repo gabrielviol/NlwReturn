@@ -17,6 +17,6 @@ export class NodemailerMailAdapter implements MailAdapter {
         to: 'Gabriel Oliveira <gabrielviol00@hotmail.com>',
         subject,
         html: body,            
-        });
-    }
+    });
+  }
 }
