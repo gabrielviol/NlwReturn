@@ -40,7 +40,9 @@ export function Widget() {
           backgroundStyle={styles.modal}
           handleIndicatorStyle={styles.indicator}
         >
-          <Sucess/>
+          <Form 
+            feedbackType='BUG'
+          />
         </BottomSheet>
 
     </>
