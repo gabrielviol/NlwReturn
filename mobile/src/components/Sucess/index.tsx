@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 
-import successImg from '../../assets/sucess.png'
+import successImg from '../../assets/success.png'
 import { Copyright } from '../Copyright';
 
 import { styles } from './styles';
