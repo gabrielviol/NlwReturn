@@ -6,6 +6,7 @@ import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
 
 import { Options } from '../Options';
 import { Form } from '../Form';
+import { Sucess } from '../Sucess';
 
 import { styles } from './styles';
 import { theme } from '../../theme';
@@ -39,9 +40,7 @@ export function Widget() {
           backgroundStyle={styles.modal}
           handleIndicatorStyle={styles.indicator}
         >
-          <Form 
-            feedbackType='BUG'
-          />
+          <Sucess/>
         </BottomSheet>
 
     </>
