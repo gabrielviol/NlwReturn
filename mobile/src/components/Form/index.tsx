@@ -10,6 +10,7 @@ import { ScreenshotButton } from  '../../components/ScreenshotButton'
 import { styles } from './styles';
 import { theme } from '../../theme';
 import { feedbackTypes } from '../../utils/feedbackTypes';
+import { api } from '../../libs/api';
 
 interface Props {
     feedbackType: FeedbackType;
@@ -18,7 +19,9 @@ interface Props {
 }
 
 export function Form({ feedbackType, onFeedbackCanceled, onFeedbackSent }: Props) {
+    const [isSendingFeedback, setIsSendingFeedback] = useState(false);
     const [screenshot, setScreenshot] = useState<string | null>(null);
+    const [comment, setComment] = useState('');
 
     const feedbackTypeInfo = feedbackTypes[feedbackType];
 
@@ -32,6 +35,29 @@ export function Form({ feedbackType, onFeedbackCanceled, onFeedbackSent }: Props
     }
     function handleScreenshotRemove(){
         setScreenshot(null);
+    }
+
+    async function handleSendFeedback () {
+        if(isSendingFeedback){
+            return;
+        }
+
+        setIsSendingFeedback(true);
+
+        try{ 
+           await api.post('/feedbacks', {
+               type: feedbackType,
+               screenshot,
+               comment
+           });
+
+           onFeedbackSent();
+
+
+        }catch(error){
+            console.log(error);
+            setIsSendingFeedback(false);
+        }
     }
 
   return (
@@ -61,6 +87,8 @@ export function Form({ feedbackType, onFeedbackCanceled, onFeedbackSent }: Props
             style={styles.input}
             placeholder="Algo não está funcionando bem? Queremos corrigir. Conte com detalhes o uqe está acontecendo."
             placeholderTextColor={theme.colors.text_secondary}
+            autoCorrect={false}
+            onChangeText={setComment}
         />
         <View style={styles.footer}>
             <ScreenshotButton 
@@ -70,7 +98,8 @@ export function Form({ feedbackType, onFeedbackCanceled, onFeedbackSent }: Props
             />
 
             <Button 
-                isLoading={false}
+                onPress={handleSendFeedback}
+                isLoading={isSendingFeedback}
             />
         </View>
 
