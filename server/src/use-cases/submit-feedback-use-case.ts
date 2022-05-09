@@ -20,7 +20,7 @@ export class SubmitFeedbackUseCase {
             throw new Error('Type is required.')
         }
         
-        if (screenshot && screenshot.startsWith('data:image/png;base64')){
+        if (screenshot && screenshot.startsWith('data:image/png; base64')){
             throw new Error('Invalid screenshot format.')
         }
 
@@ -36,6 +36,7 @@ export class SubmitFeedbackUseCase {
                 `<div style="font-family: sans-serif; font-size: 16px; colo: #111;">`,
                 `<p>Tipo do feedback ${type}</p>`,
                 `<p>Comentario: ${comment}</p>`,
+                screenshot ? `<img src="${screenshot}" />` : ``,
                 `</div>`
             ].join('\n')
             
