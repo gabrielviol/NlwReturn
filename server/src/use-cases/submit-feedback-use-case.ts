@@ -39,7 +39,6 @@ export class SubmitFeedbackUseCase {
                 screenshot ? `<img src="${screenshot}" />` : ``,
                 `</div>`
             ].join('\n')
-            
         })
     }
 }
