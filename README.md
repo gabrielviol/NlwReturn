@@ -1,5 +1,6 @@
 # NLW Return – Mission Impulse (Next Level Week)
-## Criação de um site web e um App mobile integrados com o back-end sugestões e feedbacks (Front e backend)
+## Criação de um site web e um App mobile para feedbacks (Front e backend)
+Durante a semana do NLW, realizamos a criação de uma aplicação web e mobile, integrados com o back-end, para envios de feedbacks e sugestões, com envio de e-mails como notificação e realizado testes unitário.
 
 ### 🛠 Principais tecnologias/ferramentas utilizadas
 
